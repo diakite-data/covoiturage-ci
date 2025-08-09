@@ -1,0 +1,62 @@
+name: covoiturage_ci
+description: Application de covoiturage pour la Côte d'Ivoire
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  
+  # HTTP & API
+  dio: ^5.3.3
+  retrofit: ^4.0.3
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
+  # Navigation
+  go_router: ^12.1.1
+  
+  # Maps & Location
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  geolocator: ^10.1.0
+  geocoding: ^2.1.1
+  
+  # UI Components
+  cupertino_icons: ^1.0.6
+  
+  # Utils
+  intl: ^0.18.1
+  logger: ^2.0.2
+  http: ^1.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  retrofit_generator: ^8.0.4
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+  
+  # fonts:
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: assets/fonts/Roboto-Regular.ttf
+  #       - asset: assets/fonts/Roboto-Bold.ttf
+  #         weight: 700

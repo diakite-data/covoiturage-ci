@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: covoiturage_db
+    environment:
+      POSTGRES_DB: covoiturage_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - covoiturage_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: covoiturage_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - covoiturage_network
+
+  backend:
+    build: ./backend
+    container_name: covoiturage_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/covoiturage_dev
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./backend:/app
+    networks:
+      - covoiturage_network
+
+volumes:
+  postgres_data:
+
+networks:
+  covoiturage_network:
+    driver: bridge
